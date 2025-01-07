@@ -1,4 +1,9 @@
 .bg {
   width: 100vw;
   height: 30vh;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  z-index: -2;
+  filter: blur(1px);
 }

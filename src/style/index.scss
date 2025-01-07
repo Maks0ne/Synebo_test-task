@@ -11,7 +11,7 @@ body {
   font-family: inherit;
   line-height: inherit;
   margin: 0;
-  background-color: rgb(250, 250, 250);
+  background-color: rgb(245, 241, 241);
 }
 
 *,
@@ -33,12 +33,13 @@ button {
   border-style: none;
   cursor: pointer;
   font: inherit;
+  background-color: transparent;
 }
 
 ul,
 li,
 dl {
-  // list-style-type: none;
+  list-style-type: none;
   margin: 0;
   padding: 0;
 }
