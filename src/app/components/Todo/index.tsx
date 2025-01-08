@@ -49,6 +49,7 @@ const Todo: FC = () => {
   return (
     <div className={styles.wrapper}>
       <h1 className={styles.title}>T O D O</h1>
+
       <div className={styles.newTask}>
         <div className={styles.disabledCheckbox} />
         <input
@@ -60,6 +61,7 @@ const Todo: FC = () => {
           onKeyDown={handleKeyDown}
         />
       </div>
+
       <div className={styles.taskWrapper}>
         <DndContext sensors={sensors} onDragEnd={handleDragEnd}>
           <SortableContext items={filteredTasks} strategy={verticalListSortingStrategy}>
@@ -72,8 +74,9 @@ const Todo: FC = () => {
             </div>
           </SortableContext>
         </DndContext>
+
         <nav className={styles.taskHandler}>
-          {tasks.filter((task) => task.completed).length} items left
+          {tasks.filter((task) => !task.completed).length} items left
           <section>
             <button
               onClick={() => setFilter('all')}
