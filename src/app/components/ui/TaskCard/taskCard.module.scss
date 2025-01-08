@@ -5,14 +5,15 @@
   border-bottom: 1px solid rgb(223, 222, 222);
   padding: 0 1rem;
   display: flex;
-  overflow: hidden;
-  text-overflow: ellipsis;
+  align-items: center;
 
   span {
     justify-content: center;
     margin-left: 0.5rem;
+    overflow: hidden;
+    text-overflow: ellipsis;
   }
-  
+
   .customCheckbox {
     position: relative;
     display: inline-flex;

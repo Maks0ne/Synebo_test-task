@@ -1,73 +1,20 @@
-import { FC, useEffect, useState } from 'react';
+import { FC, useState } from 'react';
 
+import useTodo from '../../../hooks/useTodo';
 import TaskCard from '../ui/TaskCard';
 import styles from './todo.module.scss';
 
-interface Task {
-  id: number;
-  text: string;
-  completed: boolean;
-}
-
-type Filter = 'all' | 'active' | 'completed';
-
 const Todo: FC = () => {
-  const [tasks, setTasks] = useState<Task[]>([]);
+  const { tasks, addTask, toggleTaskCompletion, clearCompleted, filteredTasks, filter, setFilter } =
+    useTodo();
   const [newTaskText, setNewTaskText] = useState<string>('');
-  const [filter, setFilter] = useState<Filter>('all');
-
-  const loadTasks = () => {
-    const savedTasks = localStorage.getItem('tasks');
-    if (savedTasks) {
-      setTasks(JSON.parse(savedTasks));
-    }
-  };
-
-  useEffect(() => {
-    loadTasks();
-  }, []);
-
-  const saveTasks = (tasks: Task[]) => {
-    localStorage.setItem('tasks', JSON.stringify(tasks));
-  };
-
-  const addTask = () => {
-    if (newTaskText.trim()) {
-      const newTask: Task = {
-        id: Date.now(),
-        text: newTaskText,
-        completed: false,
-      };
-      const updatedTasks = [...tasks, newTask];
-      setTasks(updatedTasks);
-      saveTasks(updatedTasks);
-      setNewTaskText('');
-    }
-  };
-
-  const toggleTaskCompletion = (taskId: number) => {
-    setTasks(
-      tasks.map((task) => (task.id === taskId ? { ...task, completed: !task.completed } : task)),
-    );
-  };
-
-  const clearCompleted = () => {
-    const updatedTasks = tasks.filter((task) => !task.completed);
-    setTasks(updatedTasks);
-    saveTasks(updatedTasks);
-  };
 
   const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
     if (e.key === 'Enter') {
-      addTask();
+      addTask(newTaskText);
+      setNewTaskText('');
     }
   };
-
-  const filteredTasks = tasks.filter((task) => {
-    if (filter === 'active') return !task.completed;
-    if (filter === 'completed') return task.completed;
-    return true;
-  });
 
   return (
     <div className={styles.wrapper}>
@@ -118,7 +65,6 @@ const Todo: FC = () => {
           <button onClick={clearCompleted}>Clear Completed</button>
         </nav>
       </div>
-
       <span className={styles.dnd}>Drag and drop to reorder list</span>
     </div>
   );
