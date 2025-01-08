@@ -9,6 +9,18 @@
   left: 0;
   flex-direction: column;
 
+  animation: fadeIn 1.5s forwards;
+
+  @media (max-width: 900px) {
+    width: 60vw;
+  }
+  @media (max-width: 600px) {
+    width: 80vw;
+  }
+  @media (max-width: 480px) {
+    width: 90vw;
+  }
+
   .title {
     justify-self: right;
     color: rgb(247, 243, 243);
@@ -53,6 +65,7 @@
   .taskContainer {
     max-height: 40vh;
     overflow-y: auto;
+    border-radius: 5px;
   }
 
   .taskHandler {
@@ -64,13 +77,15 @@
     justify-content: space-between;
     padding: 0 1rem;
     align-items: center;
+    border-radius: 5px;
+    color: #aeaeae;
 
     button {
-      padding: 5px 10px;
       cursor: pointer;
       background-color: transparent;
       border: none;
       transition: background-color 0.3s;
+      color: #aeaeae;
     }
 
     button:hover {
@@ -78,13 +93,13 @@
     }
 
     button.active {
-      color: #8e56c3; /* Цвет активной кнопки */
+      color: #8e56c3;
       font-weight: bold;
     }
 
     section {
       display: flex;
-      gap: 10px;
+      gap: 0.5rem;
     }
   }
 }
@@ -92,4 +107,14 @@
 .dnd {
   font-size: 10px;
   margin: 3rem auto;
+  color: #aeaeae;
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
 }

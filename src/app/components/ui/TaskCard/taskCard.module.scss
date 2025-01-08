@@ -6,59 +6,56 @@
   padding: 0 1rem;
   display: flex;
   align-items: center;
+}
 
-  span {
-    justify-content: center;
-    margin-left: 0.5rem;
-    overflow: hidden;
-    text-overflow: ellipsis;
-  }
+.customCheckbox {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+}
 
-  .customCheckbox {
-    position: relative;
-    display: inline-flex;
-    align-items: center;
-  }
+.customCheckbox input {
+  display: none;
+}
 
-  .customCheckbox input {
-    display: none;
-  }
+.customCheckbox .checkmark {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  border: 2px solid rgba(200, 200, 200, 0.5);
+  margin-right: 10px;
+  position: relative;
+  transition: all 0.3s;
+  cursor: pointer;
+}
 
-  .customCheckbox .checkmark {
-    width: 20px;
-    height: 20px;
-    border-radius: 50%;
-    border: 2px solid rgba(200, 200, 200, 0.5);
-    margin-right: 10px;
-    position: relative;
-    transition: all 0.3s;
-    cursor: pointer;
-  }
+.customCheckbox input:checked + .checkmark {
+  background: linear-gradient(135deg, #7fd3f7, #8e56c3);
+  border: none;
+}
 
-  .customCheckbox input:checked + .checkmark {
-    background: linear-gradient(135deg, #7fd3f7, #8e56c3);
-    border: none;
-  }
+.customCheckbox input:checked + .checkmark::after {
+  content: '\2714';
+  color: white;
+  font-size: 12px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
 
-  .customCheckbox input:checked + .checkmark::after {
-    content: '\2714';
-    color: white;
-    font-size: 12px;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-  }
+.text {
+  font-size: 16px;
+  color: rgb(85, 83, 83);
+  transition:
+    color 0.3s,
+    text-decoration 0.3s;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
 
-  .customCheckbox .text {
-    font-size: 16px;
-    color: rgb(85, 83, 83);
-    transition:
-      color 0.3s,
-      text-decoration 0.3s;
-  }
-  .customCheckbox input:checked + .checkmark + .text {
-    color: rgb(168, 163, 163);
-    text-decoration: line-through;
-  }
+.text.completed {
+  color: #aeaeae;
+  text-decoration: line-through;
 }

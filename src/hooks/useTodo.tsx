@@ -52,7 +52,17 @@ const useTodo = () => {
     return true;
   });
 
-  return { tasks, addTask, toggleTaskCompletion, clearCompleted, filteredTasks, filter, setFilter };
+  return {
+    tasks,
+    setTasks,
+    saveTasks,
+    addTask,
+    toggleTaskCompletion,
+    clearCompleted,
+    filteredTasks,
+    filter,
+    setFilter,
+  };
 };
 
 export default useTodo;
