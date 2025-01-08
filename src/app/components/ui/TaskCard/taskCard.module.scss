@@ -29,6 +29,21 @@
   cursor: pointer;
 }
 
+.customCheckbox .checkmark:hover {
+  background: linear-gradient(135deg, #7fd3f7, #8e56c3);
+  border: none;
+}
+
+.customCheckbox .checkmark:hover::after {
+  content: '\2714';
+  color: white;
+  font-size: 12px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
 .customCheckbox input:checked + .checkmark {
   background: linear-gradient(135deg, #7fd3f7, #8e56c3);
   border: none;
